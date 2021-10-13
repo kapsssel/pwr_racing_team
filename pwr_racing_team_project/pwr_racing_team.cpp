@@ -5,13 +5,13 @@
 using namespace std;
 struct vertex{
     int nr;
-    float cost;
+    double cost;
 };
 int testi=0;
 const int junctions = 15;
-const float big_enough=10000.0; //przypisuje stalej liczbe, która na pewno bedzie wieksza od tych napotkanych w problemie
-float dstance[16]={0.0};
-float lowest_travel_cost(vector<vertex>G[],char station,char destination)
+const double big_enough=10000.0; //przypisuje stalej liczbe, która na pewno bedzie wieksza od tych napotkanych w problemie
+double dstance[16]={0.0};
+double lowest_travel_cost(vector<vertex>G[],char station,char destination)
 {
 //    cout<<"Wyswietlenie tablicy dstance[] przed wyzerowaniem: "<<endl;
 //    for(int i=1; i<=junctions; i++)
@@ -32,7 +32,7 @@ float lowest_travel_cost(vector<vertex>G[],char station,char destination)
             s=3;
             break;
         case 'C':
-            s=8; 
+            s=8;
             break;
         case 'D':
             s=14;
@@ -94,7 +94,7 @@ float lowest_travel_cost(vector<vertex>G[],char station,char destination)
 
 int main()
 {
-    float r,g,b;
+    double r,g,b;
     int n;
     vertex x,y;
     char station, destination, color;
@@ -131,13 +131,13 @@ int main()
 //        }
 //        cout<<endl;
 //    }
-    float wynik=0.0;
+    double wynik=0.0;
     cin>>station;
     for(int i=0; i<n-1; i++)
     {
         cin>>destination;
 //       cout<<i+1<<" stacja: "<<station<<endl<<i+1<<" cel: "<<destination<<endl;
-       float test=lowest_travel_cost(G, station, destination);
+       double test=lowest_travel_cost(G, station, destination);
 //       cout<<i<<": "<<test<<endl;
        wynik+=test;
         station=destination;
