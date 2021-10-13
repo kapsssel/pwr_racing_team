@@ -9,11 +9,11 @@ struct vertex{
 };
 int testi=0;
 const int junctions = 15;
-const float big_enough=10000.0; //przypisujê sta³ej liczbê, która na pewno bêdzie wiêksza od tych napotkanych w problemie
+const float big_enough=10000.0; //przypisuje stalej liczbe, ktÃ³ra na pewno bedzie wieksza od tych napotkanych w problemie
 float dstance[16]={0.0};
 float lowest_travel_cost(vector<vertex>G[],char station,char destination)
 {
-//    cout<<"Wyœwietlenie tablicy dstance[] przed wyzerowaniem: "<<endl;
+//    cout<<"Wyswietlenie tablicy dstance[] przed wyzerowaniem: "<<endl;
 //    for(int i=1; i<=junctions; i++)
 //    {
 //        cout<<i<<": "<<dstance[i]<<endl;
@@ -54,20 +54,20 @@ float lowest_travel_cost(vector<vertex>G[],char station,char destination)
             d=14;
             break;
     }
-//    cout<<endl<<"Pocz¹tek: "<<s<<endl<<"Koniec: "<<d;
-     for(int i=1;i<=junctions;i++)//ustawienie wartosci pocz¹tkowych dstance[]
+//    cout<<endl<<"Poczatek: "<<s<<endl<<"Koniec: "<<d;
+     for(int i=1;i<=junctions;i++)//ustawienie wartosci poczatkowych dstance[]
     {
         dstance[i]=big_enough;
     }dstance[s]=0;
 
-//        cout<<"Wyœwietlenie tablicy dstance[]PO wyzerowaniu: "<<endl;
+//        cout<<"Wyswietlenie tablicy dstance[]PO wyzerowaniu: "<<endl;
 //    for(int i=1; i<=junctions; i++)
 //    {
 //        cout<<i<<": "<<dstance[i]<<endl;
 //    }
 //    cout<<endl<<endl;
 
-    int u=0, v=0;
+    int u=0; //v=0
     queue<vertex>Q;
     u=s;
     bool first_enter=true;
@@ -88,11 +88,6 @@ float lowest_travel_cost(vector<vertex>G[],char station,char destination)
             }
         }
     }
-//    cout<<"Wyœwietlenie tablicy dstance[]"<<endl;
-//    for(int i=1; i<=junctions; i++)
-//    {
-//        cout<<i<<": "<<dstance[i]<<endl;
-//    }
     return dstance[d];
 
 }
@@ -125,9 +120,9 @@ int main()
                     x.cost=b;
                 }
         G[x.nr].push_back(y);
-		G[y.nr].push_back(x);
+	G[y.nr].push_back(x);
     }
-//    for(int i=1;i<16;i++) //wypis listy s¹siedztwa z kosztem
+//    for(int i=1;i<16;i++) //wypis listy sasiedztwa z kosztem
 //    {
 //        cout<<i<<":";
 //        for (int j=0;j<G[i].size();j++)
@@ -149,5 +144,5 @@ int main()
 
     }cout<<wynik<<endl;
 
-
+return 0;
 }
