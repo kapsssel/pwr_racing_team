@@ -1,6 +1,6 @@
 # pwr_racing_team
-inb4: wszystkie pliki o których niżej mowa są zmieszczone w: kapsssel/pwr_racing_team/edit/main/pwr_racing_team_project \n
-Pierwszym krokiem była decyzja jak będę chciał przechowywać mapę z węzławmi w programie, tak żebym mógł za każdym odpaleniem programu zmieniać wartości dróg:
+inb4: wszystkie pliki o których niżej mowa są zmieszczone w: kapsssel/pwr_racing_team/edit/main/pwr_racing_team_project 
+# Pierwszym krokiem była decyzja jak będę chciał przechowywać mapę z węzławmi w programie, tak żebym mógł za każdym odpaleniem programu zmieniać wartości dróg:
 czerwonej - r
 zielonej - g
 niebieskiej - b
