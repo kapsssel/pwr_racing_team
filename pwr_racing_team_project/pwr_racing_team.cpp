@@ -32,7 +32,7 @@ float lowest_travel_cost(vector<vertex>G[],char station,char destination)
             s=3;
             break;
         case 'C':
-            s=8;
+            s=8; 
             break;
         case 'D':
             s=14;
