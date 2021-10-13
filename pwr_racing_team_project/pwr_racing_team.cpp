@@ -7,7 +7,12 @@ struct vertex{
     int nr;
     double cost;
 };
-int testi=0;
+struct checkbox
+{
+    double value;
+    bool calc;
+};
+checkbox ifcalculated[13];
 const int junctions = 15;
 const double big_enough=10000.0; //przypisuje stalej liczbe, która na pewno bedzie wieksza od tych napotkanych w problemie
 double dstance[16]={0.0};
@@ -88,12 +93,44 @@ double lowest_travel_cost(vector<vertex>G[],char station,char destination)
             }
         }
     }
-    return dstance[d];
+    int multichar=(int(station)%64)*(int(destination)%64);//wyznaczam unikalne miejsce w tablicy ifcalculated dla kazdej kombinacji 2 elementów zbioru {A,B,C,D}
+    switch(multichar)
+    {
+    case (int('A')%64)*(int('B')%64):
+        ifcalculated[(int('A')%64) * (int('B')%64)].calc=true;//jesli trasa A->B = B<-A zostala wyliczona zapisuje jej wartosc w ifcalculated i oznaczam ze ta trasa jest juz
+		    						//obliczona
+        ifcalculated[(int('A')%64) * (int('B')%64)].value=dstance[d];
+        break;
+    case (int('A')%64)*(int('C')%64):
+        ifcalculated[(int('A')%64) * (int('C')%64)].calc=true;
+        ifcalculated[(int('A')%64) * (int('C')%64)].value=dstance[d];
+        break;
+    case (int('A')%64)*(int('D')%64):
+        ifcalculated[(int('A')%64) * (int('D')%64)].calc=true;
+        ifcalculated[(int('A')%64) * (int('D')%64)].value=dstance[d];
+        break;
+    case (int('B')%64)*(int('C')%64):
+        ifcalculated[(int('B')%64) * (int('C')%64)].calc=true;
+        ifcalculated[(int('B')%64) * (int('C')%64)].value=dstance[d];
+        break;
+    case (int('B')%64)*(int('D')%64):
+        ifcalculated[(int('B')%64) * (int('D')%64)].calc=true;
+        ifcalculated[(int('B')%64) * (int('D')%64)].value=dstance[d];
+        break;
+    case (int('C')%64)*(int('D')%64):
+        ifcalculated[(int('C')%64) * (int('D')%64)].calc=true;
+        ifcalculated[(int('C')%64) * (int('D')%64)].value=dstance[d];
+        break;
 
 }
-
+return dstance[d];
+}
 int main()
 {
+        for(int i=0;i<13;i++)//jeszcze zadna droga nie zostala obliczona
+    {
+       ifcalculated[i].calc=false;
+    }
     double r,g,b;
     int n;
     vertex x,y;
@@ -136,10 +173,13 @@ int main()
     for(int i=0; i<n-1; i++)
     {
         cin>>destination;
+        int z;
+        z=(int(station)%64)*(int(destination)%64);
 //       cout<<i+1<<" stacja: "<<station<<endl<<i+1<<" cel: "<<destination<<endl;
-       double test=lowest_travel_cost(G, station, destination);
-//       cout<<i<<": "<<test<<endl;
-       wynik+=test;
+        if( ifcalculated[z].calc) //sprawdzam czy dana trasa byla juz liczona
+            wynik+=ifcalculated[z].value; //jesli tak przypisuje ja do wyniku i unikam ponownego uruchamiania funkcji
+        else
+            wynik+=lowest_travel_cost(G, station, destination);
         station=destination;
 
     }cout<<wynik<<endl;
